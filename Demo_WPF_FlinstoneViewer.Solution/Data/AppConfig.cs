@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Demo_WinForms_FlintstonesViewer
+namespace Demo_WPF_FlintstonesViewer
 {
     public static class AppConfig
     {

@@ -4,11 +4,11 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Demo_WinForms_FlintstonesViewer;
-using Demo_Wpf_FlinstoneViewer;
-using Demo_WPF_FlinstoneViewer.Models;
+using Demo_WPF_FlintstonesViewer;
+using Demo_Wpf_FlintstoneViewer;
+using Demo_WPF_FlintstoneViewer.Models;
 
-namespace Demo_WPF_FlinstoneViewer.BusinessLayer
+namespace Demo_WPF_FlintstoneViewer.BusinessLayer
 {
     public class FlintstoneViewerBL
     {

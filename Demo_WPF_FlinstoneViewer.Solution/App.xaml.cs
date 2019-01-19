@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Demo_Wpf_FlinstoneViewer
+namespace Demo_Wpf_FlintstoneViewer
 {
     /// <summary>
     /// Interaction logic for App.xaml

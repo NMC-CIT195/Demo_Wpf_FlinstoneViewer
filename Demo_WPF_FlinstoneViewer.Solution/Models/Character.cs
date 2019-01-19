@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Demo_WPF_FlinstoneViewer.Models
+namespace Demo_WPF_FlintstoneViewer.Models
 {
     public class Character
     {

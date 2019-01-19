@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using System.IO;
-using Demo_WPF_FlinstoneViewer.Models;
+using Demo_WPF_FlintstoneViewer.Models;
 
-namespace Demo_WinForms_FlintstonesViewer
+namespace Demo_WPF_FlintstoneViewer.DataAccessLayer
 
 {
     public class XmlDataService : IDataService
