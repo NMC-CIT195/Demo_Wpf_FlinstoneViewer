@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Demo_Wpf_FlinstoneViewer
+namespace Demo_Wpf_FlinstoneViewer.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

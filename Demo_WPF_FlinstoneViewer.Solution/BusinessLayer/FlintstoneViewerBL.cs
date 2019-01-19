@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Demo_WinForms_FlintstonesViewer;
+using Demo_Wpf_FlinstoneViewer;
+using Demo_WPF_FlinstoneViewer.Models;
 
 namespace Demo_WPF_FlinstoneViewer.BusinessLayer
 {
@@ -16,7 +20,7 @@ namespace Demo_WPF_FlinstoneViewer.BusinessLayer
 
         #region FIELDS
 
-        SalesTrackerViewModel _salesTrackerViewModel;
+        MainWindowViewModel _mainWindowViewModel;
 
         #endregion
 
@@ -28,76 +32,74 @@ namespace Demo_WPF_FlinstoneViewer.BusinessLayer
 
         #region CONSTRUCTORS
 
-        public SalesTrackerBL()
+        public FlintstoneViewerBL()
         {
-            _salesTrackerViewModel = new SalesTrackerViewModel();
-            InitializeSalespersonData();
-            InitializeProduct();
-            InitializeSalesData();
+            _mainWindowViewModel = new MainWindowViewModel();
+            InitializeTalentAgencyData();
+            InitializeCharacterData();
 
             //
             // instantiate and show the Main Window
             //
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.DataContext = _salesTrackerViewModel;
-            mainWindow.Show();
+            MainWindowView mainWindowView = new MainWindowView();
+            mainWindowView.DataContext = _mainWindowViewModel;
+            mainWindowView.Show();
         }
-
-
 
         #endregion
 
         #region METHODS
 
-        private void InitializeSalespersonData()
+        private void InitializeTalentAgencyData()
         {
-            _salesTrackerViewModel.Salesperson = new Salesperson()
+            _mainWindowViewModel.TalentAgency = new TalentAgency()
             {
-                AccountId = 1001,
-                FirstName = "Fred",
-                LastName = "Flintstone"
+                Name = "Troglodyte Talent Agency",
+                Address = "465 Jurassic Lane",
+                City = "Bedrock"
             };
         }
 
-        private void InitializeProduct()
-        {
-            _salesTrackerViewModel.Product = "Rainbow Widgets";
-            _salesTrackerViewModel.UnitPrice = 3.95;
-        }
 
-        private void InitializeSalesData()
+        private void InitializeCharacterData()
         {
-            _salesTrackerViewModel.Transactions = new ObservableCollection<CityTransaction>()
+            _mainWindowViewModel.Characters = new ObservableCollection<Character>()
             {
-                new CityTransaction()
+                new Character()
                 {
-                    CityName = "Detroit",
-                    Date = DateTime.Parse("1/2/2018"),
-                    Buy = 0,
-                    Sell = 10,
-                    Note = "Spent time with associate sales rep on the Circus discussing strategies.",
-                    Photo = "detroit.jpg",
-                    HasPhoto = true
+                   Id = 1,
+                   FirstName = "Fred",
+                   LastName = "Flintstone",
+                   Age = 28,
+                   Gender = Character.GenderType.Male,
+                   ImageFileName = "fred_flintstone.jpg",
+                   Description = "Fred is the main character of the series. He's an accident-prone bronto-crane operator at the Slate Rock and Gravel Company and the head of the Flintstone household. He is quick to anger (usually over trivial matters), but is nonetheless a very loving husband and father. He's also good at bowling and is a member of the fictional Loyal Order of Water Buffaloes (Lodge No. 26), a men-only club paralleling real-life fraternities such as the Loyal Order of Moose.",
+                  HireDate = DateTime.Parse("03-23-1963"),
+                  AverageAnnualGross = 23445.85
                 },
-                new CityTransaction()
+                new Character()
                 {
-                    CityName = "Grand Rapids",
-                    Date = DateTime.Parse("1/3/2018"),
-                    Buy = 5,
-                    Sell = 5,
-                    Note = "Met with the VP in charge of marketing for Widget International. It appears that their sales are skyrocketing and they will need us to increase our supply rate by 450%. After the meeting, she bought me a raspberry Bentley.",
-                    Photo = "grand_rapids.jpg",
-                    HasPhoto = true
+                   Id = 1,
+                   FirstName = "Wilma",
+                   LastName = "Flintstone",
+                   Age = 28,
+                   Gender = Character.GenderType.Female,
+                   ImageFileName = "wilma_flintstone.jpg",
+                   Description = "Wilma is Fred's wife. She is more intelligent and level-headed than her husband, though she often has a habit of spending money recklessly (with Betty and her catchphrase being 'Da-da-da duh da-da CHARGE IT!!'). She's often a foil to Fred's poor behavior.",
+                   HireDate = DateTime.Parse("03-23-1963"),
+                   AverageAnnualGross = 45834.00
                 },
-                new CityTransaction()
+                new Character()
                 {
-                    CityName = "Traverse City",
-                    Date = DateTime.Parse("1/7/2018"),
-                    Buy = 15,
-                    Sell = 0,
-                    Note = "The drive up was rough and reported to the area representative later than anticipated.",
-                    Photo = "",
-                    HasPhoto = false
+                   Id = 1,
+                   FirstName = "Pebbles",
+                   LastName = "Flintstone",
+                   Age = 1,
+                   Gender = Character.GenderType.Female,
+                   ImageFileName = "wilma_flintstone.jpg",
+                   Description = "Pebbles is the Flintstones' infant daughter, who is born near the end of the third season.",
+                   HireDate = DateTime.Parse("03-23-1966"),
+                   AverageAnnualGross = 8364.75
                 }
             };
         }

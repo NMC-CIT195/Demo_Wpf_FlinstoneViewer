@@ -20,15 +20,12 @@ namespace Demo_WPF_FlinstoneViewer.Models
 
         private TalentAgency _talentAgency;
         private ObservableCollection<Character> _characters;
-
-
-
-
+        private Character _character;
 
         #endregion
 
         #region PROPERTIES
-        
+
         public TalentAgency TalentAgency
         {
             get { return _talentAgency; }
@@ -39,6 +36,12 @@ namespace Demo_WPF_FlinstoneViewer.Models
         {
             get { return _characters; }
             set { _characters = value; }
+        }
+
+        public Character Character
+        {
+            get { return _character; }
+            set { _character = value; }
         }
 
         #endregion

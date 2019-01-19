@@ -63,10 +63,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="BusinessLayer\FlintstoneViewerBL.cs" />
-    <Compile Include="Character.cs" />
     <Compile Include="DAL\IDataService.cs" />
     <Compile Include="DAL\XmlDataService.cs" />
     <Compile Include="Data\AppConfig.cs" />
+    <Compile Include="Models\Character.cs" />
     <Compile Include="Models\MainWindowViewModel.cs" />
     <Compile Include="Models\TalentAgency.cs" />
     <Compile Include="PresentationLayer\Views\MainWindowView.xaml.cs">

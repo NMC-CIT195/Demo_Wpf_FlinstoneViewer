@@ -1,9 +1,9 @@
-﻿<Window x:Name="ListWindow" x:Class="Demo_Wpf_FlinstoneViewer.MainWindow"
+﻿<Window x:Name="ListWindow" x:Class="Demo_Wpf_FlinstoneViewer.MainWindowView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Demo_Wpf_FlinstoneViewer"
+        xmlns:local="clr-namespace:Demo_Wpf_FlinstoneViewer.Views"
         mc:Ignorable="d"
         Title="MainWindow" Height="500" Width="800">
     <Grid
