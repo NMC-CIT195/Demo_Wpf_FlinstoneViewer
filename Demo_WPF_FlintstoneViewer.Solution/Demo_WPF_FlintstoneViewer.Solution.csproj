@@ -54,7 +54,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="PresentationLayer\Views\MainWindowView.xaml">
+    <Page Include="PresentationLayer\MainWindowView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -69,12 +69,13 @@
     <Compile Include="Models\Character.cs" />
     <Compile Include="Models\MainWindowViewModel.cs" />
     <Compile Include="Models\TalentAgency.cs" />
-    <Compile Include="PresentationLayer\Views\MainWindowView.xaml.cs">
+    <Compile Include="PresentationLayer\MainWindowView.xaml.cs">
       <DependentUpon>MainWindowView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PresentationLayer\Converters\NullToDateConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

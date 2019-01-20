@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Demo_WPF_FlintstonesViewer;
-using Demo_Wpf_FlintstoneViewer;
 using Demo_WPF_FlintstoneViewer.Models;
 
 namespace Demo_WPF_FlintstoneViewer.BusinessLayer
@@ -96,7 +95,7 @@ namespace Demo_WPF_FlintstoneViewer.BusinessLayer
                    LastName = "Flintstone",
                    Age = 1,
                    Gender = Character.GenderType.Female,
-                   ImageFileName = "wilma_flintstone.jpg",
+                   ImageFileName = "pebbles_flintstone.jpg",
                    Description = "Pebbles is the Flintstones' infant daughter, who is born near the end of the third season.",
                    HireDate = DateTime.Parse("03-23-1966"),
                    AverageAnnualGross = 8364.75

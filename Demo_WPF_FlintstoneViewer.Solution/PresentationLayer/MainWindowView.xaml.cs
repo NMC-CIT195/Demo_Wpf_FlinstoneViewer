@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Demo_WPF_FlintstoneViewer.PresentationLayer
+namespace Demo_WPF_FlintstoneViewer
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -23,6 +23,11 @@ namespace Demo_WPF_FlintstoneViewer.PresentationLayer
         public MainWindowView()
         {
             InitializeComponent();
+        }
+
+        private void Button_Quit_Click(object sender, RoutedEventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }

@@ -32,8 +32,8 @@ namespace Demo_WPF_FlintstoneViewer.Models
 
         public int Id
         {
-            get { return Id; }
-            set { Id = value; }
+            get { return _id; }
+            set { _id = value; }
         }
 
         public string FirstName
@@ -84,6 +84,16 @@ namespace Demo_WPF_FlintstoneViewer.Models
             set { _averageAnnualGross = value; }
         }
 
+        public string FullName
+        {
+            get { return _firstName + " " + _lastName; }
+        }
+
+        public string ImageFilePath
+        {
+            get { return @"../Images/" + _imageFileName; }
+        }
+
         #endregion
 
         #region CONSTRUCTORS
@@ -97,10 +107,6 @@ namespace Demo_WPF_FlintstoneViewer.Models
 
         #region METHODS
 
-        public string FullName()
-        {
-            return FirstName + (LastName != null ? " " + LastName : "");
-        }
 
         #endregion
 
