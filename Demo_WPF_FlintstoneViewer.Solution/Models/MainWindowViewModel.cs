@@ -44,6 +44,14 @@ namespace Demo_WPF_FlintstoneViewer.Models
             set { _character = value; }
         }
 
+        //public string ImageFilePath
+        //{
+        //    get
+        //    {
+        //        return Characters.
+        //    }
+        //}
+
         #endregion
 
         #region CONSTRUCTORS

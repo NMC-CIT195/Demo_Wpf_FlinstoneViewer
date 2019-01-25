@@ -5,62 +5,81 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Demo_WPF_FlintstoneViewer.PresentationLayer"
         mc:Ignorable="d"
-        Title="Talent Agency Software, Inc." Height="500" Width="800">
+        Title="Talent Agency Software, Inc." 
+        Height="500" 
+        Width="800"
+        Background="AntiqueWhite"    
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
     <Window.Resources>
+        <Style x:Key="HeaderStyle" TargetType="Label">
+            <Setter Property="Foreground" Value="DarkGoldenrod"/>
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        <Style x:Key="LabelTextStyle" TargetType="Label">
+            <Setter Property="Foreground" Value="DarkGoldenrod"/>
+            <Setter Property="FontSize" Value="12"/>
+        </Style>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="DarkGoldenrod"/>
+            <Setter Property="Foreground" Value="AntiqueWhite"/>
+        </Style>
         <local:NullToDateConverter x:Key="DateConverter"/>
-
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1.5*"/>
             <RowDefinition Height="5*"/>
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
         <StackPanel 
             Grid.Row="0">
             <Label
-            FontSize="24"
-            HorizontalAlignment="Center"
-            Content="Troglodyte Talent Agency"/>
+                Style="{StaticResource HeaderStyle}"
+                HorizontalAlignment="Center"
+                Content="Troglodyte Talent Agency"/>
             <Label
-            Margin="0,0,0,0"
-            Padding="0,0,0,0"
-            FontSize="12"
-            HorizontalAlignment="Center"
-            Content="{Binding TalentAgency.Address}"/>
+                Margin="0,0,0,0"
+                Padding="0,0,0,0"
+                FontSize="12"
+                HorizontalAlignment="Center"
+                Content="{Binding TalentAgency.Address}"/>
             <Label
-            Margin="0,0,0,0"
-            Padding="0,0,0,0"
-            FontSize="12"
-            HorizontalAlignment="Center"
-            Content="{Binding TalentAgency.City}"/>
+                Margin="0,0,0,0"
+                Padding="0,0,0,0"
+                FontSize="12"
+                HorizontalAlignment="Center"
+                Content="{Binding TalentAgency.City}"/>
         </StackPanel>
-
-        <Grid Grid.Row="1">
+        <Grid 
+            Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
-             <ListBox x:Name="_master"
+            <ListBox 
+                x:Name="_master"
                  Grid.Column="0"
                  Margin="10,10,10,10"
                  BorderThickness="0"
+                 Background="AntiqueWhite"
                  ItemsSource="{Binding Characters}"
+                 SelectedItem="{Binding SelectedCharacter, Mode=TwoWay}"
                  IsSynchronizedWithCurrentItem="true">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel
                             Orientation="Horizontal">
                             <Border Margin="5" BorderBrush="Black" BorderThickness="1">
-                                <Image Source="{Binding ImageFilePath}" Stretch="UniformToFill"  Width="50" Height="50" />
+                                <Image Source="{Binding ImageFilePath}" Stretch="UniformToFill"  Width="40" Height="40" />
                             </Border>
                             <Label
                             Content="{Binding FullName}"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
-            </ListBox>              
-
+            </ListBox>
             <Grid 
                 Grid.Column="1"
                 DataContext="{Binding SelectedItem, ElementName=_master}">
@@ -68,25 +87,62 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
-                    <Image 
-                        Grid.Column="0"
-                        Height="200"
-                        Source="{Binding ImageFilePath}"/>               
+                <Image 
+                    Grid.Column="0"
+                    Height="200"
+                    Source="{Binding ImageFilePath}"/>
+                <StackPanel
+                    Grid.Column="1"
+                    Margin="10,10,10,10"
+                    Orientation="Vertical">
+                    <TextBlock Text="{Binding FirstName, StringFormat='First Name: \{0\}'}"/>
+                    <TextBlock Text="{Binding LastName, StringFormat='Last Name: \{0\}'}"/>
+                    <TextBlock Text="{Binding Age, StringFormat='Age: \{0\}'}"/>
+                    <TextBlock Text="{Binding Gender, StringFormat='Gender: \{0\}'}"/>
+                    <TextBlock Text="{Binding HireDate, StringFormat='Hire Date: \{0:MM/dd/yyyy\}'}"/>
+                    <TextBlock Text="{Binding AverageAnnualGross, StringFormat='Average Gross: \{0:c\}'}"/>
+                    <TextBlock
+                        TextWrapping="Wrap"                        
+                        Height="100"
+                        Text="{Binding Description, StringFormat='Description: \{0\}'}"/>
                     <StackPanel
-                        Grid.Column="1"
-                        Margin="10,10,10,10"
-                        Orientation="Vertical"> 
-                        <TextBlock Text="{Binding FirstName, StringFormat='First Name: \{0\}'}"/>
-                        <TextBlock Text="{Binding LastName, StringFormat='Last Name: \{0\}'}"/>
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Right">
+                        <Button 
+                            x:Name="Button_Edit" 
+                            Width="100"
+                            Height="40"
+                            Margin="10,10,10,10"
+                            VerticalAlignment="Center"           
+                            FontSize="20"
+                            Content="Edit"
+                            Style="{StaticResource ButtonStyle}"
+                            Click="Button_Edit_Click"/>
+                        <Button 
+                            x:Name="Button_Delete" 
+                            Width="100"
+                            Height="40"
+                            Margin="10,10,10,10"
+                            VerticalAlignment="Center"           
+                            FontSize="20"
+                            Content="Delete"
+                            Style="{StaticResource ButtonStyle}"
+                            Click="Button_Delete_Click"/>
+                    </StackPanel>
                 </StackPanel>
             </Grid>
-
         </Grid>
-        <Button x:Name="Button_Quit" 
+        <Button 
+            x:Name="Button_Quit" 
             Grid.Row="2"
             Width="100"
-            Margin="0, 10, 0, 10"
+            Height="40"
+            Margin="10,10,20,10"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center"           
             FontSize="20"
-            Content="Quit" Click="Button_Quit_Click"/>
+            Content="Quit"
+            Style="{StaticResource ButtonStyle}"
+            Click="Button_Quit_Click"/>
     </Grid>
 </Window>

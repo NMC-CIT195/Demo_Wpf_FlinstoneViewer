@@ -29,5 +29,15 @@ namespace Demo_WPF_FlintstoneViewer
         {
             Environment.Exit(0);
         }
+
+        private void Button_Edit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Delete_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
