@@ -2,14 +2,21 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace Demo_WPF_FlintstoneViewer.Models
 {
-    public class MainWindowViewModel
+    public class MainWindowViewModel : ObservableObject
     {
+        public ICommand DeleteCharacterCommand
+        {
+            get { return new DelegateCommand(OnDeleteCharacter); }
+        }
+
         #region ENUMS
 
 
@@ -20,7 +27,7 @@ namespace Demo_WPF_FlintstoneViewer.Models
 
         private TalentAgency _talentAgency;
         private ObservableCollection<Character> _characters;
-        private Character _character;
+        private Character _selectedCharacter;
 
         #endregion
 
@@ -38,37 +45,52 @@ namespace Demo_WPF_FlintstoneViewer.Models
             set { _characters = value; }
         }
 
-        public Character Character
+        public Character SelectedCharacter
         {
-            get { return _character; }
-            set { _character = value; }
+            get { return _selectedCharacter; }
+            set
+            {
+                if (_selectedCharacter == value)
+                {
+                    return;
+                }
+                _selectedCharacter = value;
+                RaisePropertyChanged("SelectedCharacter");
+            }
         }
 
-        //public string ImageFilePath
-        //{
-        //    get
-        //    {
-        //        return Characters.
-        //    }
-        //}
 
         #endregion
 
         #region CONSTRUCTORS
 
+        public MainWindowViewModel()
+        {
 
+        }
 
         #endregion
 
         #region METHODS
 
+        private void OnDeleteCharacter()
+        {
+            _characters.Remove(_selectedCharacter);
+        }
 
-
+        private void RaisePropertyChanged(string propertyName)
+        {
+            var handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
         #endregion
 
         #region EVENTS
 
-
+        public event PropertyChangedEventHandler PropertyChanged;
 
         #endregion
 

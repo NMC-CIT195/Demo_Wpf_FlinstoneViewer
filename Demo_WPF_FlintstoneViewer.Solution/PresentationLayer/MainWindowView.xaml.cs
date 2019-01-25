@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Demo_WPF_FlintstoneViewer.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,8 @@ namespace Demo_WPF_FlintstoneViewer
         public MainWindowView()
         {
             InitializeComponent();
+            MainWindowViewModel MainWindowViewModel = new MainWindowViewModel();
+            DataContext = MainWindowViewModel;
         }
 
         private void Button_Quit_Click(object sender, RoutedEventArgs e)
@@ -31,11 +34,6 @@ namespace Demo_WPF_FlintstoneViewer
         }
 
         private void Button_Edit_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Button_Delete_Click(object sender, RoutedEventArgs e)
         {
 
         }

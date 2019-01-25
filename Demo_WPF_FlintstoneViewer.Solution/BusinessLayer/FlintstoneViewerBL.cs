@@ -4,6 +4,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
 using Demo_WPF_FlintstonesViewer;
 using Demo_WPF_FlintstoneViewer.Models;
 
@@ -19,6 +21,7 @@ namespace Demo_WPF_FlintstoneViewer.BusinessLayer
 
         #region FIELDS
 
+        MainWindowView _mainWindowView;
         MainWindowViewModel _mainWindowViewModel;
 
         #endregion
@@ -40,9 +43,9 @@ namespace Demo_WPF_FlintstoneViewer.BusinessLayer
             //
             // instantiate and show the Main Window
             //
-            MainWindowView mainWindowView = new MainWindowView();
-            mainWindowView.DataContext = _mainWindowViewModel;
-            mainWindowView.Show();
+            _mainWindowView = new MainWindowView();
+            _mainWindowView.DataContext = _mainWindowViewModel;
+            _mainWindowView.Show();
         }
 
         #endregion
@@ -154,7 +157,6 @@ namespace Demo_WPF_FlintstoneViewer.BusinessLayer
         #endregion
 
         #region EVENTS
-
 
 
         #endregion
