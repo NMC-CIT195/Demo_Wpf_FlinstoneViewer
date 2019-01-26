@@ -40,6 +40,17 @@ namespace Demo_WPF_FlintstoneViewer.Models
         {
             get { return _firstName; }
             set { _firstName = value; }
+
+            //get { return _firstName; }
+            //set
+            //{
+            //    if (_firstName == value)
+            //    {
+            //        return;
+            //    }
+            //    _firstName = value;
+            //    RaisePropertyChangedEvent("FirstName");
+            //}
         }
 
         public string LastName

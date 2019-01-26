@@ -55,7 +55,7 @@ namespace Demo_WPF_FlintstoneViewer.Models
                     return;
                 }
                 _selectedCharacter = value;
-                RaisePropertyChanged("SelectedCharacter");
+                RaisePropertyChangedEvent("SelectedCharacter");
             }
         }
 
@@ -66,7 +66,7 @@ namespace Demo_WPF_FlintstoneViewer.Models
 
         public MainWindowViewModel()
         {
-
+            
         }
 
         #endregion
@@ -78,19 +78,10 @@ namespace Demo_WPF_FlintstoneViewer.Models
             _characters.Remove(_selectedCharacter);
         }
 
-        private void RaisePropertyChanged(string propertyName)
-        {
-            var handler = PropertyChanged;
-            if (handler != null)
-            {
-                handler(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
         #endregion
 
         #region EVENTS
 
-        public event PropertyChangedEventHandler PropertyChanged;
 
         #endregion
 

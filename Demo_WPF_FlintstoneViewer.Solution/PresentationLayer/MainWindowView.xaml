@@ -65,19 +65,23 @@
             </Grid.ColumnDefinitions>
             <ListBox 
                 x:Name="_master"
-                 Grid.Column="0"
-                 Margin="10,10,10,10"
-                 BorderThickness="0"
-                 Background="AntiqueWhite"
-                 ItemsSource="{Binding Characters}"
-                 SelectedItem="{Binding SelectedCharacter, Mode=TwoWay}"
-                 IsSynchronizedWithCurrentItem="true">
+                Grid.Column="0"
+                Margin="10,10,10,10"
+                BorderThickness="0"
+                Background="AntiqueWhite"
+                ItemsSource="{Binding Characters}"
+                SelectedItem="{Binding SelectedCharacter, Mode=TwoWay}"
+                IsSynchronizedWithCurrentItem="true">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel
                             Orientation="Horizontal">
                             <Border Margin="5" BorderBrush="Black" BorderThickness="1">
-                                <Image Source="{Binding ImageFilePath}" Stretch="UniformToFill"  Width="40" Height="40" />
+                                <Image 
+                                    Source="{Binding ImageFilePath}" 
+                                    Stretch="UniformToFill"  
+                                    Width="40" 
+                                    Height="40" />
                             </Border>
                             <Label
                             Content="{Binding FullName}"/>
@@ -86,30 +90,29 @@
                 </ListBox.ItemTemplate>
             </ListBox>
             <Grid 
-                Grid.Column="1"
-                DataContext="{Binding SelectedItem, ElementName=_master}">
-                <Grid.ColumnDefinitions>
+                Grid.Column="1">
+                    <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
                 <Image 
                     Grid.Column="0"
                     Height="200"
-                    Source="{Binding ImageFilePath}"/>
+                    Source="{Binding SelectedCharacter.ImageFilePath}"/>
                 <StackPanel
                     Grid.Column="1"
                     Margin="10,10,10,10"
                     Orientation="Vertical">
-                    <TextBlock Text="{Binding FirstName, StringFormat='First Name: \{0\}'}"/>
-                    <TextBlock Text="{Binding LastName, StringFormat='Last Name: \{0\}'}"/>
-                    <TextBlock Text="{Binding Age, StringFormat='Age: \{0\}'}"/>
-                    <TextBlock Text="{Binding Gender, StringFormat='Gender: \{0\}'}"/>
-                    <TextBlock Text="{Binding HireDate, StringFormat='Hire Date: \{0:MM/dd/yyyy\}'}"/>
-                    <TextBlock Text="{Binding AverageAnnualGross, StringFormat='Average Gross: \{0:c\}'}"/>
+                    <TextBlock Text="{Binding SelectedCharacter.FirstName, StringFormat='First Name: \{0\}'}"/>
+                    <TextBlock Text="{Binding SelectedCharacter.LastName, StringFormat='Last Name: \{0\}'}"/>
+                    <TextBlock Text="{Binding SelectedCharacter.Age, StringFormat='Age: \{0\}'}"/>
+                    <TextBlock Text="{Binding SelectedCharacter.Gender, StringFormat='Gender: \{0\}'}"/>
+                    <TextBlock Text="{Binding SelectedCharacter.HireDate, StringFormat='Hire Date: \{0:MM/dd/yyyy\}'}"/>
+                    <TextBlock Text="{Binding SelectedCharacter.AverageAnnualGross, StringFormat='Average Gross: \{0:c\}'}"/>
                     <TextBlock
                         TextWrapping="Wrap"                        
                         Height="100"
-                        Text="{Binding Description, StringFormat='Description: \{0\}'}"/>
+                        Text="{Binding SelectedCharacter.Description, StringFormat='Description: \{0\}'}"/>
                 </StackPanel>
             </Grid>
         </Grid>
@@ -147,6 +150,8 @@
                 Content="Quit"
                 Style="{StaticResource ButtonStyle}"
                 Click="Button_Quit_Click"/>
+            <Label
+                Content="{Binding SelectedCharacter.LastName}"/>
         </StackPanel>
 
 
