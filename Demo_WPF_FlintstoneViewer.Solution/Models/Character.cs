@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Demo_WPF_FlintstoneViewer.Models
 {
-    public class Character
+    public class Character : ObservableObject
     {
         #region ENUMS
 
@@ -21,6 +21,7 @@ namespace Demo_WPF_FlintstoneViewer.Models
         private string _lastName;
         private int _age;
         private GenderType _gender;
+        private string _fullName;
         private string _imageFileName;
         private string _description;
         private DateTime _hireDate;
@@ -39,24 +40,21 @@ namespace Demo_WPF_FlintstoneViewer.Models
         public string FirstName
         {
             get { return _firstName; }
-            set { _firstName = value; }
-
-            //get { return _firstName; }
-            //set
-            //{
-            //    if (_firstName == value)
-            //    {
-            //        return;
-            //    }
-            //    _firstName = value;
-            //    RaisePropertyChangedEvent("FirstName");
-            //}
+            set
+            {
+                _firstName = value;
+                RaisePropertyChangedEvent("FullName"); // update items bound to the FullName property
+            }
         }
 
         public string LastName
         {
             get { return _lastName; }
-            set { _lastName = value; }
+            set
+            {
+                _lastName = value;
+                RaisePropertyChangedEvent("FullName"); // update items bound to the FullName property
+            }
         }
 
         public int Age

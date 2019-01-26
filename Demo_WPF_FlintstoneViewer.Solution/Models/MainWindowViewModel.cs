@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Demo_WPF_FlintstoneViewer.Models
@@ -15,6 +16,11 @@ namespace Demo_WPF_FlintstoneViewer.Models
         public ICommand DeleteCharacterCommand
         {
             get { return new DelegateCommand(OnDeleteCharacter); }
+        }
+
+        public ICommand EditCharacterCommand
+        {
+            get { return new DelegateCommand(OnEditCharacter); }
         }
 
         #region ENUMS
@@ -59,14 +65,13 @@ namespace Demo_WPF_FlintstoneViewer.Models
             }
         }
 
-
         #endregion
 
         #region CONSTRUCTORS
 
         public MainWindowViewModel()
         {
-            
+
         }
 
         #endregion
@@ -75,7 +80,17 @@ namespace Demo_WPF_FlintstoneViewer.Models
 
         private void OnDeleteCharacter()
         {
-            _characters.Remove(_selectedCharacter);
+            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show($"Are you sure you want to delete {_selectedCharacter.FullName}?", "Delete Character", System.Windows.MessageBoxButton.OKCancel);
+
+            if (messageBoxResult == MessageBoxResult.OK)
+            {
+                _characters.Remove(_selectedCharacter);
+            }
+        }
+
+        private void OnEditCharacter()
+        {
+
         }
 
         #endregion

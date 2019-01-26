@@ -10,6 +10,7 @@
         Width="800"
         Background="AntiqueWhite"    
         ResizeMode="NoResize"
+        WindowStyle="None"
         WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style x:Key="HeaderStyle" TargetType="Label">
@@ -17,7 +18,24 @@
             <Setter Property="FontSize" Value="24"/>
             <Setter Property="FontWeight" Value="Bold"/>
         </Style>
-        <Style x:Key="LabelTextStyle" TargetType="Label">
+        <Style x:Key="SubHeaderStyle" TargetType="Label">
+            <Setter Property="Foreground" Value="DarkGoldenrod"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+        <Style x:Key="DetailLabelStyle" TargetType="Label">
+            <Setter Property="Foreground" Value="DarkGoldenrod"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        <Style x:Key="DetailTextBoxStyle" TargetType="TextBox">
+            <Setter Property="Width" Value="120"/>
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="Foreground" Value="DarkGoldenrod"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+        <Style x:Key="MasterLabelTextStyle" TargetType="Label">
             <Setter Property="Foreground" Value="DarkGoldenrod"/>
             <Setter Property="FontSize" Value="12"/>
         </Style>
@@ -34,9 +52,9 @@
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="80"/>
             <RowDefinition Height="5*"/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <StackPanel 
             Grid.Row="0">
@@ -49,13 +67,15 @@
                 Padding="0,0,0,0"
                 FontSize="12"
                 HorizontalAlignment="Center"
-                Content="{Binding TalentAgency.Address}"/>
+                Content="{Binding TalentAgency.Address}"
+                Style="{StaticResource SubHeaderStyle}"/>
             <Label
                 Margin="0,0,0,0"
                 Padding="0,0,0,0"
                 FontSize="12"
                 HorizontalAlignment="Center"
-                Content="{Binding TalentAgency.City}"/>
+                Content="{Binding TalentAgency.City}"
+                Style="{StaticResource SubHeaderStyle}"/>
         </StackPanel>
         <Grid 
             Grid.Row="1">
@@ -84,14 +104,15 @@
                                     Height="40" />
                             </Border>
                             <Label
-                            Content="{Binding FullName}"/>
+                                Content="{Binding FullName}"
+                                Style="{StaticResource MasterLabelTextStyle}"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
             <Grid 
                 Grid.Column="1">
-                    <Grid.ColumnDefinitions>
+                <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
@@ -103,22 +124,50 @@
                     Grid.Column="1"
                     Margin="10,10,10,10"
                     Orientation="Vertical">
-                    <TextBlock Text="{Binding SelectedCharacter.FirstName, StringFormat='First Name: \{0\}'}"/>
-                    <TextBlock Text="{Binding SelectedCharacter.LastName, StringFormat='Last Name: \{0\}'}"/>
-                    <TextBlock Text="{Binding SelectedCharacter.Age, StringFormat='Age: \{0\}'}"/>
-                    <TextBlock Text="{Binding SelectedCharacter.Gender, StringFormat='Gender: \{0\}'}"/>
-                    <TextBlock Text="{Binding SelectedCharacter.HireDate, StringFormat='Hire Date: \{0:MM/dd/yyyy\}'}"/>
-                    <TextBlock Text="{Binding SelectedCharacter.AverageAnnualGross, StringFormat='Average Gross: \{0:c\}'}"/>
-                    <TextBlock
-                        TextWrapping="Wrap"                        
-                        Height="100"
-                        Text="{Binding SelectedCharacter.Description, StringFormat='Description: \{0\}'}"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="First Name: " Style="{StaticResource DetailLabelStyle}"/>
+                        <TextBox Text="{Binding SelectedCharacter.FirstName}" Style="{StaticResource DetailTextBoxStyle}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Last Name: " Style="{StaticResource DetailLabelStyle}"/>
+                        <TextBox Text="{Binding SelectedCharacter.LastName}" Style="{StaticResource DetailTextBoxStyle}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Age: " Style="{StaticResource DetailLabelStyle}"/>
+                        <TextBox Text="{Binding SelectedCharacter.Age}" Style="{StaticResource DetailTextBoxStyle}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Gender: " Style="{StaticResource DetailLabelStyle}"/>
+                        <TextBox Text="{Binding SelectedCharacter.Gender}" Style="{StaticResource DetailTextBoxStyle}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Hire Date: " Style="{StaticResource DetailLabelStyle}"/>
+                        <TextBox Text="{Binding SelectedCharacter.HireDate, StringFormat='Hire Date: \{0:MM/dd/yyyy\}'}" Style="{StaticResource DetailTextBoxStyle}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Average Annual Gross: " Style="{StaticResource DetailLabelStyle}"/>
+                        <TextBox Text="{Binding SelectedCharacter.AverageAnnualGross, StringFormat='\{0:c\}'}" Style="{StaticResource DetailTextBoxStyle}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical">
+                        <Label Content="Description: " Style="{StaticResource DetailLabelStyle}"/>
+                        <TextBox
+                            HorizontalAlignment="Left"
+                            Width="300"
+                            Height="120"
+                            TextWrapping="Wrap"
+                            AcceptsReturn="True"
+                            VerticalContentAlignment="Top"
+                            VerticalScrollBarVisibility="Visible"
+                            Text="{Binding SelectedCharacter.Description}" 
+                            Style="{StaticResource DetailTextBoxStyle}"/>
+                    </StackPanel>
                 </StackPanel>
             </Grid>
         </Grid>
         <StackPanel 
             Grid.Row="2"
-            Orientation="Horizontal">
+            Orientation="Horizontal"
+            HorizontalAlignment="Right">
             <Button 
                 x:Name="Button_Edit" 
                 Width="100"
@@ -128,7 +177,7 @@
                 FontSize="20"
                 Content="Edit"
                 Style="{StaticResource ButtonStyle}"
-                Click="Button_Edit_Click"/>
+                Command="{Binding Path=EditCharacterCommand}"/>
             <Button 
                 x:Name="Button_Delete" 
                 Width="100"
@@ -150,10 +199,6 @@
                 Content="Quit"
                 Style="{StaticResource ButtonStyle}"
                 Click="Button_Quit_Click"/>
-            <Label
-                Content="{Binding SelectedCharacter.LastName}"/>
         </StackPanel>
-
-
     </Grid>
 </Window>
